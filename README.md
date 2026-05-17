@@ -8,16 +8,19 @@ VivaEventos es una plataforma robusta para la venta de boletas de eventos, const
 
 ---
 
-## 🏗️ Arquitectura del Sistema
+## 🏗️ Arquitectura de Microservicios
 
-El sistema se divide en los siguientes componentes estratégicos:
+El sistema se compone de los siguientes módulos interconectados:
 
 | Servicio | Descripción | Puerto | Repositorio |
 | :--- | :--- | :--- | :--- |
-| **Service Registry** | Localizador de servicios (Netflix Eureka). | `8761` | [Ver repo](https://github.com/Davidgarar/service-registry) |
-| **Event Service** | Gestión del catálogo de eventos y disponibilidad. | `8081` | [Ver repo](https://github.com/Davidgarar/event-service) |
-| **Order Service** | Procesamiento de órdenes y ventas. | `8082` | [Ver repo](https://github.com/Davidgarar/order-service) |
-| **Notification Service** | Envío de confirmaciones y alertas. | `8083` | [Ver repo](https://github.com/Davidgarar/notification-service) |
+| **Service Registry** | Discovery Server (Netflix Eureka). | `8761` | [Ver repo](https://github.com/Davidgarar/service-registry) |
+| **Auth Service** | Autenticación, autorización y seguridad (JWT). | `8084` | [Ver repo](https://github.com/Davidgarar/auth-service) |
+| **Event Service** | Gestión de eventos, locaciones y fechas. | `8081` | [Ver repo](https://github.com/Davidgarar/event-service) |
+| **Ticket Service** | Generación, control y validación de boletas. | `8086` | [Ver repo](https://github.com/Davidgarar/ticket-service) |
+| **Order Service** | Procesamiento de órdenes de compra. | `8082` | [Ver repo](https://github.com/Davidgarar/order-service) |
+| **Payment Service** | Pasarela y procesamiento de pagos. | `8085` | [Ver repo](https://github.com/Davidgarar/payment-service) |
+| **Notification Service** | Envío de correos y alertas al usuario. | `8083` | [Ver repo](https://github.com/Davidgarar/notification-service) |
 
 ---
 
