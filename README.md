@@ -22,6 +22,7 @@ El sistema se compone de los siguientes módulos interconectados:
 | **Payment Service** | Pasarela y procesamiento de pagos. | `8085` | [Ver repo](https://github.com/Davidgarar/payment-service) |
 | **Notification Service** | Envío de correos y alertas al usuario. | `8083` | [Ver repo](https://github.com/Davidgarar/notification-service) |
 | **Validation Service** | Validacion Logistica. | `8087` | [Ver repo](https://github.com/JuanHincapie86/validation-service) |
+| **Email service** | Confirmacion y recordatorio via email. | `8088` | [Ver repo](https://github.com/JuanHincapie86/email-service) |
 ---
 
 ## 🚀 Guía de Inicio Rápido
