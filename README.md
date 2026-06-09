@@ -32,14 +32,21 @@ El sistema se compone de los siguientes módulos interconectados:
 *   **Maven 3.8+**.
 *   **Git** instalado.
 
-### Orden de ejecucion:
-Terminal 1 - Service Registry (primero)
+## ⚙️ Orden de Ejecución Local (Manual)
 
-Terminal 2 - Event Service (segundo)
+Si desea levantar los servicios de forma manual e independiente en lugar de usar Docker, debes abrir una pestaña de la terminal para cada microservicio y ejecutarlos estrictamente en el siguiente orden para asegurar el correcto registro en Eureka:
 
-Terminal 3 - Order Service (tercero)
+* **Terminal 1:** Service Registry (Primero - Servidor de Descubrimiento)
+* **Terminal 2:** Event Service (Segundo)
+* **Terminal 3:** Order Service (Tercero)
+* **Terminal 4:** Notification Service (Cuarto)
+* **Terminal 5:** Auth Service (Quinto)
+* **Terminal 6:** Ticket Service (Sexto)
+* **Terminal 7:** Payment Service (Séptimo)
+* **Terminal 8:** Validation Service (Octavo)
+* **Terminal 9:** Email Service (Noveno)
 
-Terminal 4 - Notification Service (cuarto)
+---
 
 ## 🐳 Despliegue con Docker (Ecosistema Completo)
 
@@ -82,14 +89,19 @@ Una vez que cualquiera de los dos entornos esté arriba y saludable (**Healthy**
 | Validation Service | `8087` | Conexión interna |
 | Email Service | `8088` | Conexión interna |
 
-### Instalación (Clonar todo)
-Ejecuta este comando en tu terminal para clonar todos los repositorios en una sola carpeta:
+## 📥 Instalación (Clonación Completa del Ecosistema)
+
+Para descargar el repositorio principal de orquestación junto con los 9 microservicios independientes en tu máquina local de un solo golpe, copia y pega el siguiente comando unificado en tu terminal:
 
 ```bash
-mkdir VivaEventos-Project && cd VivaEventos-Project && \
+git clone [https://github.com/ALEJANDRO807/vivaeventos-project.git](https://github.com/ALEJANDRO807/vivaeventos-project.git) && cd vivaeventos-project && \
 git clone [https://github.com/Davidgarar/service-registry.git](https://github.com/Davidgarar/service-registry.git) && \
 git clone [https://github.com/Davidgarar/event-service.git](https://github.com/Davidgarar/event-service.git) && \
 git clone [https://github.com/Davidgarar/order-service.git](https://github.com/Davidgarar/order-service.git) && \
-git clone [https://github.com/Davidgarar/notification-service.git](https://github.com/Davidgarar/notification-service.git)
+git clone [https://github.com/Davidgarar/notification-service.git](https://github.com/Davidgarar/notification-service.git) && \
+git clone [https://github.com/Davidgarar/auth-service.git](https://github.com/Davidgarar/auth-service.git) && \
+git clone [https://github.com/Davidgarar/ticket-service.git](https://github.com/Davidgarar/ticket-service.git) && \
+git clone [https://github.com/Davidgarar/payment-service.git](https://github.com/Davidgarar/payment-service.git) && \
+git clone [https://github.com/JuanHincapie86/validation-service.git](https://github.com/JuanHincapie86/validation-service.git) && \
+git clone [https://github.com/JuanHincapie86/email-service.git](https://github.com/JuanHincapie86/email-service.git)
 ```
-
