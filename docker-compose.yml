@@ -1,0 +1,131 @@
+version: '3.8'
+
+networks:
+  vivaeventos-net:
+    driver: bridge
+
+services:
+  # 1. El Servidor de Descubrimiento (Eureka)
+  service-registry:
+    image: alejandrolunalh/service-registry:latest
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    networks:
+      - vivaeventos-net
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8761"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  # 2. Servicio de Eventos
+  event-service:
+    image: alejandrolunalh/event-service:latest
+    container_name: event-service
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 3. Servicio de Órdenes
+  order-service:
+    image: alejandrolunalh/order-service:latest
+    container_name: order-service
+    ports:
+      - "8082:8082"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 4. Servicio de Notificaciones
+  notification-service:
+    image: alejandrolunalh/notification-service:latest
+    container_name: notification-service
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 5. Servicio de Pagos
+  payment-service:
+    image: alejandrolunalh/payment-service:latest
+    container_name: payment-service
+    ports:
+      - "8084:8084"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 6. Servicio de Autenticación
+  auth-service:
+    image: alejandrolunalh/auth-service:latest
+    container_name: auth-service
+    ports:
+      - "8085:8085"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 7. Servicio de Tickets
+  ticket-service:
+    image: alejandrolunalh/ticket-service:latest
+    container_name: ticket-service
+    ports:
+      - "8086:8086"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 8. Servicio de Validación
+  validation-service:
+    image: alejandrolunalh/validation-service:latest
+    container_name: validation-service
+    ports:
+      - "8087:8087"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://service-registry:8761/eureka/
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
+
+  # 9. Servicio Email
+  email-service:
+    image: alejandrolunalh/email-service:latest
+    container_name: email-service
+    ports:
+      - "8088:8088"
+    networks:
+      - vivaeventos-net
+    depends_on:
+      service-registry:
+        condition: service_healthy
