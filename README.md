@@ -41,6 +41,46 @@ Terminal 3 - Order Service (tercero)
 
 Terminal 4 - Notification Service (cuarto)
 
+## 🐳 Despliegue con Docker (Ecosistema Completo)
+
+### 🚀 Instrucciones para ejecutar el proyecto localmente
+
+No es necesario compilar el código fuente ni generar los archivos `.jar` localmente, ya que las imágenes se descargarán automáticamente desde la nube.
+
+Antes de iniciar cualquiera de los dos despliegues, asegúrate de contar con:
+* **Docker Desktop** instalado y en ejecución.
+
+### 📌 Registro de Imágenes Públicas
+Las imágenes utilizadas se encuentran alojadas en el siguiente perfil público de Docker Hub:
+👉 [Perfil de Docker Hub - alejandrolunalh](https://hub.docker.com/u/alejandrolunalh)
+
+### 🚀 Comandos de Inicialización
+
+1. Abre una terminal en la raíz de este repositorio (donde reside el archivo `docker-compose.yml`).
+2. Ejecuta el siguiente comando para descargar las imágenes e iniciar el ecosistema en segundo plano:
+   ```bash
+   docker compose up -d
+
+### 🔍 Verificar el estado de los servicios
+Puedes comprobar el estado de los contenedores mediante el panel visual de **Docker Desktop** o directamente desde tu terminal ejecutando:
+```bash
+docker compose ps
+```
+# 📊 Matriz de Puertos y Enlaces de Acceso
+
+Una vez que cualquiera de los dos entornos esté arriba y saludable (**Healthy**), podrás interactuar con los microservicios de manera transparente a través de tu `localhost`.
+
+| Servicio | Puerto Local | Endpoint Base / Dashboard |
+|---|---|---|
+| Servidor de Descubrimiento (Eureka) | `8761` | http://localhost:8761 |
+| Auth Service (Autenticación) | `8085` | http://localhost:8085/api/v1/auth |
+| Event Service (Eventos) | `8081` | http://localhost:8081/api/v1/events/ |
+| Order Service (Órdenes) | `8082` | http://localhost:8082/api/v1/orders/ |
+| Ticket Service (Tickets) | `8086` | http://localhost:8086/api/v1/tickets/ |
+| Payment Service (Pagos) | `8084` | http://localhost:8084/api/v1/payments/ |
+| Notification Service | `8083` | Conexión interna |
+| Validation Service | `8087` | Conexión interna |
+| Email Service | `8088` | Conexión interna |
 
 ### Instalación (Clonar todo)
 Ejecuta este comando en tu terminal para clonar todos los repositorios en una sola carpeta:
@@ -51,3 +91,5 @@ git clone [https://github.com/Davidgarar/service-registry.git](https://github.co
 git clone [https://github.com/Davidgarar/event-service.git](https://github.com/Davidgarar/event-service.git) && \
 git clone [https://github.com/Davidgarar/order-service.git](https://github.com/Davidgarar/order-service.git) && \
 git clone [https://github.com/Davidgarar/notification-service.git](https://github.com/Davidgarar/notification-service.git)
+```
+
